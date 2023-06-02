@@ -1,0 +1,19 @@
+{
+  "files": {
+    "main.css": "/posts-carousel/static/css/main.18997def.css",
+    "main.js": "/posts-carousel/static/js/main.ad37a688.js",
+    "static/media/walking-people.jpg": "/posts-carousel/static/media/walking-people.1b3bfc99745eb6294cb1.jpg",
+    "static/media/gym.jpg": "/posts-carousel/static/media/gym.3c2925c9900c7d1ebdfc.jpg",
+    "static/media/workers.jpg": "/posts-carousel/static/media/workers.f3f83dc92b127c6605ad.jpg",
+    "static/media/man-working.jpg": "/posts-carousel/static/media/man-working.82247da20105c38c8654.jpg",
+    "static/media/mountains.jpg": "/posts-carousel/static/media/mountains.13e1f5965dd3a0317085.jpg",
+    "static/media/team.jpg": "/posts-carousel/static/media/team.e6ce7d80c8e50642722a.jpg",
+    "index.html": "/posts-carousel/index.html",
+    "main.18997def.css.map": "/posts-carousel/static/css/main.18997def.css.map",
+    "main.ad37a688.js.map": "/posts-carousel/static/js/main.ad37a688.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.18997def.css",
+    "static/js/main.ad37a688.js"
+  ]
+}
