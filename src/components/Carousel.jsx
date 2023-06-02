@@ -29,6 +29,11 @@ const PostsCarousel = () => {
           height: '23px',
         },
       }}
+      navButtonsProps={{
+        style: {
+          padding: '14px',
+        },
+      }}
     >
       {posts.map(item => (
         <Item key={item.id} item={item} />
