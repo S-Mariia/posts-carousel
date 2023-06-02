@@ -1,11 +1,13 @@
 import { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 import { createPost } from 'redux/operations';
 import { removeComments } from 'redux/slice';
+import { selectIsLoading } from 'redux/selectors';
 
 import { Formik, Form, Field, ErrorMessage } from 'formik';
-import { TextField, Button, Typography } from '@mui/material';
+import { TextField, Typography } from '@mui/material';
+import { LoadingButton } from '@mui/lab';
 
 import SendIcon from '@mui/icons-material/Send';
 
@@ -17,6 +19,7 @@ import { StyledBox } from './AddPostForm.styled';
 
 const AddPostForm = ({ setIsModalOpen }) => {
   const dispatch = useDispatch();
+  const loading = useSelector(selectIsLoading);
 
   useEffect(() => {
     dispatch(removeComments());
@@ -64,15 +67,16 @@ const AddPostForm = ({ setIsModalOpen }) => {
               helperText={<ErrorMessage name={formFields.body.name} />}
             />
 
-            <Button
+            <LoadingButton
               type="submit"
               variant="contained"
               size="large"
+              loading={loading}
               sx={{ margin: '16px auto', display: 'flex' }}
               endIcon={<SendIcon />}
             >
               Send
-            </Button>
+            </LoadingButton>
           </Form>
         )}
       </Formik>

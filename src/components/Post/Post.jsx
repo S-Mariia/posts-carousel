@@ -1,5 +1,7 @@
 import { useState, useMemo } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
+
+import { toast } from 'react-hot-toast';
 
 import {
   CardActions,
@@ -11,7 +13,6 @@ import {
 import { getDefaultPoster } from 'shared/helpers/getDefaultPoster';
 
 import { getComments } from 'redux/operations';
-import { selectComments } from 'redux/selectors';
 
 import AddPostForm from 'components/AddPostForm/AddPostForm';
 import Statistics from 'components/Statistics/Statistics';
@@ -28,7 +29,6 @@ import {
 
 const Post = ({ item, commentsShown, setCommentsShown }) => {
   const { id, title, body } = item;
-  const comments = useSelector(selectComments);
 
   const dispatch = useDispatch();
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -36,9 +36,24 @@ const Post = ({ item, commentsShown, setCommentsShown }) => {
 
   const randStatistics = useMemo(() => getRandomStatistics(), []);
   const showComments = () => {
-    dispatch(getComments(id)).then(() => {
-      setCommentsShown(true);
-    });
+    dispatch(getComments(id))
+      .then(({ payload }) => {
+        if (payload.length === 0) {
+          toast("This post don't have any comments yet", {
+            icon: '❕',
+            style: {
+              borderRadius: '10px',
+              background: 'darkred',
+              color: '#fff',
+            },
+          });
+          throw new Error("This post don't have any comments yet");
+        }
+      })
+      .then(() => {
+        setCommentsShown(true);
+      })
+      .catch(e => console.log(e));
   };
 
   return (
@@ -55,7 +70,7 @@ const Post = ({ item, commentsShown, setCommentsShown }) => {
         <CardActions>
           <Grid container justifyContent="space-between">
             <Grid item>
-              {commentsShown && comments.length > 0 ? (
+              {commentsShown ? (
                 <Button onClick={() => setCommentsShown(false)}>
                   Hide comments
                 </Button>
