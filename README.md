@@ -2,7 +2,7 @@
 
 ##### An application where you can find a list of posts. You can move between posts with navigation buttons or using indicators in the bottom. [https://jsonplaceholder.typicode.com/posts](https://jsonplaceholder.typicode.com) povides just title and body of the post so default posters were used.
 
-photo
+![carousel](https://github.com/S-Mariia/posts-carousel/assets/105200661/b4e13055-7aee-42f8-9ea8-a4eb15fac000)
 
 ##### By clicking on the "Show comments" button you can find the comments on this post.
 
