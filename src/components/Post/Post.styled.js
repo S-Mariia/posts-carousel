@@ -1,8 +1,8 @@
 import styled from '@emotion/styled';
-import { Typography, CardMedia, Card, CardContent } from '@mui/material';
+import { Typography, CardMedia, Card, Modal, Box } from '@mui/material';
 
 export const StyledCard = styled(Card)`
-  height: 470px;
+  height: 570px;
 
   display: flex;
   flex-direction: column;
@@ -10,7 +10,7 @@ export const StyledCard = styled(Card)`
 
 export const StyledCardMedia = styled(CardMedia)`
   position: relative;
-  /* height: 300px; */
+
   flex-grow: 1;
   object-fit: cover;
 `;
@@ -39,4 +39,23 @@ export const Title = styled(Typography)`
   }
 `;
 
-export const StyledCardContent = styled(CardContent)``;
+export const StyledModal = styled(Modal)`
+  .MuiBackdrop-root {
+    background-color: rgba(43, 43, 43, 0.6);
+    backdrop-filter: blur(10px);
+  }
+`;
+
+export const StyledBox = styled(Box)`
+  width: 450px;
+  height: 500px;
+
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  background-color: white;
+  box-shadow: 7px 13px 14px rgba(0, 0, 0, 0.24);
+  border-radius: 10px;
+`;

@@ -11,6 +11,11 @@ const initialState = {
 const postsSlice = createSlice({
   name: 'posts',
   initialState,
+  reducers: {
+    removeComments: state => {
+      state.comments = [];
+    },
+  },
   extraReducers: builder => {
     builder
       .addCase(getPosts.pending, state => {
@@ -30,7 +35,7 @@ const postsSlice = createSlice({
         state.error = null;
       })
       .addCase(createPost.fulfilled, (state, { payload }) => {
-        state.posts.push(payload);
+        state.posts.unshift(payload);
         state.isLoading = false;
       })
       .addCase(createPost.rejected, (state, { payload }) => {
@@ -51,5 +56,7 @@ const postsSlice = createSlice({
       });
   },
 });
+
+export const { removeComments } = postsSlice.actions;
 
 export default postsSlice.reducer;

@@ -1,5 +1,8 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
+
 import * as api from 'shared/servises/api';
+
+import { toast } from 'react-hot-toast';
 
 export const getPosts = createAsyncThunk(
   'posts/fetchPosts',
@@ -7,7 +10,6 @@ export const getPosts = createAsyncThunk(
     try {
       return await api.fetchPosts();
     } catch (error) {
-      console.log(error);
       return rejectWithValue(error.message);
     }
   }
@@ -17,7 +19,17 @@ export const createPost = createAsyncThunk(
   'posts/createPost',
   async (data, { rejectWithValue }) => {
     try {
-      return await api.addPost(data);
+      const result = await api.addPost(data);
+      toast('The post was successfully created', {
+        icon: '✅',
+        style: {
+          borderRadius: '10px',
+          background: 'darkgreen',
+          color: '#fff',
+        },
+      });
+
+      return result;
     } catch (error) {
       return rejectWithValue(error.message);
     }
