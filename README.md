@@ -19,6 +19,6 @@ photo
 
 ## Run the project
 
-Install the project's base dependencies with the npm install command.
-Start development mode by running the npm start command.
+1. Install the project's base dependencies with the `npm install` command.
+2. Start development mode by running the `npm start` command.
 
